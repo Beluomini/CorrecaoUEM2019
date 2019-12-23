@@ -1,6 +1,7 @@
 package Main;
 
 import Geradores.GerarProva1;
+import Geradores.GerarProva2;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -28,6 +29,8 @@ import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import myTools.Ferramentas;
 import tools.CentroDoMonitorMaior;
 
+
+
 public class MenuPrincipal extends JFrame {
 
     Container cp;
@@ -41,24 +44,28 @@ public class MenuPrincipal extends JFrame {
     JLabel labelComImagemDeTamanhoDiferente = new JLabel();
     JLabel lbEspecifica1 = new JLabel("Especifica 1: ");
     JLabel lbEspecifica2 = new JLabel("Especifica 2: ");
+    JLabel lbLE = new JLabel("Lingua Estrangeira: ");
 
     JButton btAvancar = new JButton("Avançar");
     JButton btOk1 = new JButton("Ok");
     JButton btOk2 = new JButton("Ok");
+    JButton btOk3 = new JButton("Ok");
     JButton btCancelar1 = new JButton("Cancelar");
     JButton btCancelar2 = new JButton("Cancelar");
+    JButton btCancelar3 = new JButton("Cancelar");
 
     JComboBox cbEspecifica1 = new JComboBox();
     JComboBox cbEspecifica2 = new JComboBox();
+    JComboBox cbLE = new JComboBox();
 
     Point p;
 
     Ferramentas fer = new Ferramentas();
     Controle controle = new Controle();
 
-    public MenuPrincipal(Dimension dimensao) {
+    public MenuPrincipal() {
 
-        List<String> listaAuxiliar = fer.abrirArquivo(new File("").getAbsolutePath()+ "/src/Main/Respostas.txt");
+        List<String> listaAuxiliar = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Main/Respostas.txt");
         if (listaAuxiliar != null) {
             for (int i = 0; i < listaAuxiliar.size(); i++) {
                 String aux[] = listaAuxiliar.get(i).split(";");
@@ -68,7 +75,6 @@ public class MenuPrincipal extends JFrame {
         }
 
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setSize(dimensao);
         setTitle(lbTitulo.getText());
 
         cp = getContentPane();
@@ -77,14 +83,11 @@ public class MenuPrincipal extends JFrame {
         lbTitulo.setFont(fonte);
         pnNorte.setBackground(Color.green);
 
-        String esp1;
-        String esp2;
-
         List especificas1 = new ArrayList();
 
         List especificas2 = new ArrayList();
 
-        especificas1.add("Arte ");
+        especificas1.add("Arte");
         especificas1.add("Biologia");
         especificas1.add("EdFisica");
         especificas1.add("Filosofia");
@@ -101,7 +104,15 @@ public class MenuPrincipal extends JFrame {
         for (Object e : especificas1) {
             cbEspecifica1.addItem(e.toString());
         }
-
+        
+        cbLE.addItem("Espanhol");
+        cbLE.addItem("Françes");
+        cbLE.addItem("Ingles");
+        
+        pnSul.add(lbLE);
+        pnSul.add(cbLE);
+        pnSul.add(btOk3);
+        pnSul.add(btCancelar3);
         pnSul.add(lbEspecifica1);
         pnSul.add(cbEspecifica1);
         pnSul.add(btOk1);
@@ -115,16 +126,47 @@ public class MenuPrincipal extends JFrame {
         btAvancar.setBackground(Color.GREEN);
         btOk1.setBackground(Color.GREEN);
         btOk2.setBackground(Color.GREEN);
+        btOk3.setBackground(Color.GREEN);
         btCancelar1.setBackground(Color.RED);
         btCancelar2.setBackground(Color.RED);
+        btCancelar3.setBackground(Color.RED);
         btCancelar1.setForeground(Color.WHITE);
         btCancelar2.setForeground(Color.WHITE);
+        btCancelar3.setForeground(Color.WHITE);
 
         btOk2.setVisible(false);
+        btOk1.setVisible(false);
         cbEspecifica2.setEnabled(false);
+        cbEspecifica1.setEnabled(false);
         btCancelar1.setVisible(false);
         btCancelar2.setVisible(false);
+        btCancelar3.setVisible(false);
         btAvancar.setVisible(false);
+        
+        btOk3.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btOk3.setVisible(false);
+                btCancelar3.setVisible(true);
+                btOk1.setVisible(true);
+                btCancelar1.setVisible(false);
+                btOk2.setVisible(false);
+                btCancelar2.setVisible(false);
+                cbEspecifica1.setEnabled(true);
+                cbEspecifica2.setEnabled(false);
+                cbLE.setEnabled(false);
+
+                for (Object a : especificas2) {
+                    if (a.toString().equals(cbEspecifica1.getSelectedItem().toString())) {
+
+                    } else {
+                        cbEspecifica2.addItem(a.toString());
+                    }
+                }
+
+            }
+        });
 
         btOk1.addActionListener(new ActionListener() {
 
@@ -135,6 +177,7 @@ public class MenuPrincipal extends JFrame {
                 btOk2.setVisible(true);
                 cbEspecifica1.setEnabled(false);
                 cbEspecifica2.setEnabled(true);
+                cbEspecifica2.removeAllItems();
 
                 for (Object a : especificas2) {
                     if (a.toString().equals(cbEspecifica1.getSelectedItem().toString())) {
@@ -155,6 +198,24 @@ public class MenuPrincipal extends JFrame {
                 btOk2.setVisible(false);
                 cbEspecifica2.setEnabled(false);
                 btAvancar.setVisible(true);
+
+            }
+        });
+        
+        btCancelar3.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btCancelar3.setVisible(false);
+                btCancelar2.setVisible(false);
+                btCancelar1.setVisible(false);
+                btOk1.setVisible(false);
+                btOk2.setVisible(false);
+                btOk3.setVisible(true);
+                cbEspecifica2.setEnabled(false);
+                btAvancar.setVisible(false);
+                cbEspecifica1.setEnabled(false);
+                cbLE.setEnabled(true);
 
             }
         });
@@ -191,10 +252,14 @@ public class MenuPrincipal extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                String le = cbLE.getSelectedItem().toString();
                 String esp1 = cbEspecifica1.getSelectedItem().toString();
                 String esp2 = cbEspecifica2.getSelectedItem().toString();
-
-                GerarProva1 gerarQuestionario1 = new GerarProva1();
+                List<String> estrangeiras = controle.listar();
+                estrangeiras.clear();
+                estrangeiras.add(le + ";" + esp1 + ";" + esp2);
+                fer.salvarArquivo(new File("").getAbsolutePath() + "/src/Main/Especificas.txt", estrangeiras);
+                //GerarProva1 gerarProva1 = new GerarProva1();
                 Prova1 prova1 = new Prova1();
             }
         });
@@ -204,7 +269,7 @@ public class MenuPrincipal extends JFrame {
             ImageIcon icone = new ImageIcon(getClass().getResource("/fotos/uem.jpg"));
             Image imagemAux;
             imagemAux = icone.getImage();
-            icone.setImage(imagemAux.getScaledInstance(674, 308, Image.SCALE_FAST));
+            icone.setImage(imagemAux.getScaledInstance(954, 408, Image.SCALE_FAST));
 
             labelComImagemDeTamanhoDiferente = new JLabel();
             labelComImagemDeTamanhoDiferente.setIcon(icone);

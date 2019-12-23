@@ -1,2 +1,31 @@
-- Fazer a pagina da prova do segundo dia (mantenha o gerador e crie outro com base naquele)
-- Pegar os valores da lista (prova, questão, resposta) e fazer a conta
+- Pegar os valores da lista (prova, questão, resposta)
+- Pegar os valores do gabarito ofical e colocar em txt
+- Fazer a conta no ultimo crud
+
+materias:
+1  - 10 Lingua portuguesa
+11 - 15 Literatura
+16 - 20 Lingua estrangeira
+21 - 35 Esp. 1
+36 - 50 Esp. 2
+
+===============================
+
+1 - Conhecimentos gerais
+2 - Lingua portuguesa
+3 - Literatura
+
+4 - Espanhol
+5 - frances
+6 - ingles
+
+7 - arte
+8 - biologia
+9 - ed fis
+10 - filo
+11 - fisica
+12 - geo
+13 - histo *
+14 - mat   *
+15 - qui
+16 - socio

@@ -77,7 +77,7 @@ public class GerarProva1 {
                 + "    JPanel pnLeste = new JPanel(new GridLayout(20, 2));\n"
                 + "    JPanel pnOeste = new JPanel(new GridLayout(20, 2));\n"
                 + "    JPanel pnCentro = new JPanel(new GridLayout(20, 2));\n"
-                + "    JPanel pnNorte = new JPanel(new BorderLayout());\n"
+                + "    JPanel pnNorte = new JPanel();\n"
                 + "    JPanel pnSul = new JPanel(new BorderLayout());\n\n");
 
         codigoGerado.add("Controle controle = new Controle();\n"
@@ -103,7 +103,7 @@ public class GerarProva1 {
                 + "        cp.add(pnSul, BorderLayout.SOUTH);\n"
                 + "        cp.add(pnNorte, BorderLayout.NORTH);\n"
                 + "\n"
-                + "        pnNorte.add(lbTitulo, BorderLayout.CENTER);"
+                + "        pnNorte.add(lbTitulo);"
                 + "        pnPrincipal.add(pnOeste);\n"
                 + "        pnPrincipal.add(pnCentro);\n"
                 + "        pnPrincipal.add(pnLeste);\n"
@@ -120,18 +120,17 @@ public class GerarProva1 {
                     + "pnLeste.add(tf" + i + ");\n");
         }
 
-        //------------------------REMOVER-------------------------------------------
+        //------------------------ACESSO AO TXT-------------------------------------------
         Ferramentas fer = new Ferramentas();
         List<String> c = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Main/Respostas.txt");
         System.out.println(c.size());
-
         
-            for (int j = 0; j < c.size(); j++) {
+            for (int j = 0; j < 40; j++) {
                 String aux[] = c.get(j).split(";");
                 codigoGerado.add("tf" + (j+1) + ".setText(\"" + aux[2] + "\");");
             }
         
-        //------------------------REMOVER-------------------------------------------
+        //------------------------ACESSO AO TXT-------------------------------------------
 
         codigoGerado.add("// Botões\n"
                 + "            btProva2.addActionListener(new ActionListener() {\n"
@@ -142,7 +141,7 @@ public class GerarProva1 {
         for (int i = 1; i <= 40; i++) {
             codigoGerado.add("     "
                     + "            Resposta resposta" + i + " = new Resposta();\n"
-                    + "            resposta" + i + ".setProva(1);\n"
+                    + "            resposta" + i + ".setMateria(1);\n"
                     + "            resposta" + i + ".setQuestao(" + i + ");\n"
                     + "            resposta" + i + ".setResposta(Integer.valueOf(tf" + i + ".getText()));\n"
                     + "            controle.inserir(resposta" + i + ");");
@@ -171,7 +170,7 @@ public class GerarProva1 {
                 + "\n"
                 + "}//fim");
 
-        String cc = "C:/Users/lucas/Documents/NetBeansProjects/ProjetoGabaritoUEM/src/Main/";
+        String cc = new File("").getAbsolutePath()+ "/src/Main/";
         System.out.println("Vai criar a classe nesse caminho=> " + cc);
         ferramentas.salvarArquivo(cc + "Prova1.java", codigoGerado);
     }

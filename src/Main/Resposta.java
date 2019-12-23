@@ -6,32 +6,30 @@ package Main;
  * @author radames
  */
 public class Resposta {
-    private int prova;
+    private int materia;
     private int questao;
     private int resposta;
-    
-    
 
     public Resposta() {
     }
 
-    public Resposta(int prova, int questao, int resposta) {
-        this.prova = prova;
+    public Resposta(int materia, int questao, int resposta) {
+        this.materia = materia;
         this.questao = questao;
         this.resposta = resposta;
     }
 
     @Override
     public String toString() {
-        return "Resposta{" + "prova=" + prova + ", questao=" + questao + ", resposta=" + resposta + '}';
+        return "Resposta{" + "materia=" + materia + ", questao=" + questao + ", resposta=" + resposta + '}';
     }
     
-    public int getProva() {
-        return prova;
+    public int getMateria() {
+        return materia;
     }
 
-    public void setProva(int prova) {
-        this.prova = prova;
+    public void setMateria(int materia) {
+        this.materia = materia;
     }
     
     public int getQuestao() {

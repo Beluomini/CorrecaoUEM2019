@@ -31,7 +31,7 @@ public class Controle {
         List<String> ls = new ArrayList<>();
         for (int i = 0; i < lista.size(); i++) {
             ls.add(""
-                    + lista.get(i).getProva() + ";"
+                    + lista.get(i).getMateria() + ";"
                     + lista.get(i).getQuestao() + ";"
                     + lista.get(i).getResposta()
             );
