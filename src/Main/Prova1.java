@@ -121,7 +121,7 @@ public class Prova1 extends JDialog {
 
     public Prova1() {
         Resposta c = new Resposta();
-        List<String> listaAuxiliar = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Main/Respostas.txt");
+        List<String> listaAuxiliar = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Dados/Respostas.txt");
         if (listaAuxiliar != null) {
             for (int i = 0; i < listaAuxiliar.size(); i++) {
                 String aux[] = listaAuxiliar.get(i).split(";");
@@ -268,50 +268,10 @@ public class Prova1 extends JDialog {
         pnLeste.add(lb40);
         pnLeste.add(tf40);
 
-        tf1.setText("1");
-        tf2.setText("2");
-        tf3.setText("3");
-        tf4.setText("4");
-        tf5.setText("5");
-        tf6.setText("6");
-        tf7.setText("7");
-        tf8.setText("78");
-        tf9.setText("89");
-        tf10.setText("90");
-        tf11.setText("8");
-        tf12.setText("6");
-        tf13.setText("5");
-        tf14.setText("4");
-        tf15.setText("3");
-        tf16.setText("3");
-        tf17.setText("4");
-        tf18.setText("4");
-        tf19.setText("3");
-        tf20.setText("4");
-        tf21.setText("4");
-        tf22.setText("5");
-        tf23.setText("5");
-        tf24.setText("4");
-        tf25.setText("4");
-        tf26.setText("3");
-        tf27.setText("4");
-        tf28.setText("4");
-        tf29.setText("5");
-        tf30.setText("6");
-        tf31.setText("54");
-        tf32.setText("4");
-        tf33.setText("1");
-        tf34.setText("4");
-        tf35.setText("5");
-        tf36.setText("3");
-        tf37.setText("3");
-        tf38.setText("4");
-        tf39.setText("5");
-        tf40.setText("6");
         
         List<String> zerar = controle.listar();
         zerar.clear();
-        fer.salvarArquivo(new File("").getAbsolutePath() + "/src/Main/Respostas.txt", zerar);
+        fer.salvarArquivo(new File("").getAbsolutePath() + "/src/Dados/Respostas.txt", zerar);
 // Botões
         btProva2.addActionListener(new ActionListener() {
             @Override
@@ -524,7 +484,7 @@ public class Prova1 extends JDialog {
                 }
                 try {
                     List<String> a = controle.listar();
-                    fer.salvarArquivo(new File("").getAbsolutePath() + "/src/Main/Respostas.txt", a);
+                    fer.salvarArquivo(new File("").getAbsolutePath() + "/src/Dados/Respostas.txt", a);
                     //GerarProva2 gerarProva2 = new GerarProva2();
                     Prova2 prova2 = new Prova2();
                     dispose();

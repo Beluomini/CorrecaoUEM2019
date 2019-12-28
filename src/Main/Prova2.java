@@ -179,7 +179,7 @@ public class Prova2 extends JDialog {
 
     public Prova2() {
         Resposta c = new Resposta();
-        List<String> listaAuxiliar = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Main/Respostas.txt");
+        List<String> listaAuxiliar = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Dados/Respostas.txt");
         if (listaAuxiliar != null) {
             for (int i = 0; i < listaAuxiliar.size(); i++) {
                 String aux[] = listaAuxiliar.get(i).split(";");
@@ -188,7 +188,7 @@ public class Prova2 extends JDialog {
             }
         }
         
-        List<String> listaAuxiliar2 = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Main/Especificas.txt");
+        List<String> listaAuxiliar2 = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Dados/Especificas.txt");
         if (listaAuxiliar2 != null) {
             for (int i = 0; i < listaAuxiliar2.size(); i++) {
                 String aux1[] = listaAuxiliar2.get(i).split(";");
@@ -202,7 +202,7 @@ public class Prova2 extends JDialog {
                 linEst = 4;
             }else if(linguaEst.equals("Françes")){
                 linEst = 5;
-            }else if(linguaEst.equals("Françes")){
+            }else if(linguaEst.equals("Ingles")){
                 linEst = 6;
             }
                 
@@ -688,7 +688,7 @@ public class Prova2 extends JDialog {
                 }
                 try {
                     List<String> a = controle.listar();
-                    fer.salvarArquivo(new File("").getAbsolutePath() + "/src/Main/Respostas.txt", a);
+                    fer.salvarArquivo(new File("").getAbsolutePath() + "/src/Dados/Respostas.txt", a);
                     Resultado resultado = new Resultado();
                     dispose();
                 } catch (Exception e) {

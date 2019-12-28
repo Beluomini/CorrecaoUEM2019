@@ -65,7 +65,7 @@ public class MenuPrincipal extends JFrame {
 
     public MenuPrincipal() {
 
-        List<String> listaAuxiliar = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Main/Respostas.txt");
+        List<String> listaAuxiliar = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Dados/Respostas.txt");
         if (listaAuxiliar != null) {
             for (int i = 0; i < listaAuxiliar.size(); i++) {
                 String aux[] = listaAuxiliar.get(i).split(";");
@@ -258,7 +258,7 @@ public class MenuPrincipal extends JFrame {
                 List<String> estrangeiras = controle.listar();
                 estrangeiras.clear();
                 estrangeiras.add(le + ";" + esp1 + ";" + esp2);
-                fer.salvarArquivo(new File("").getAbsolutePath() + "/src/Main/Especificas.txt", estrangeiras);
+                fer.salvarArquivo(new File("").getAbsolutePath() + "/src/Dados/Especificas.txt", estrangeiras);
                 //GerarProva1 gerarProva1 = new GerarProva1();
                 Prova1 prova1 = new Prova1();
             }
