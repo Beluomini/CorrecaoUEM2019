@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import myTools.Ferramentas;
 import java.io.File;
+import java.io.IOException;
 import javax.swing.WindowConstants;
 import java.util.List;
 import javafx.scene.layout.Border;
@@ -119,7 +120,7 @@ public class Prova1 extends JDialog {
     Controle controle = new Controle();
     Ferramentas fer = new Ferramentas();
 
-    public Prova1() {
+    public Prova1(){
         Resposta c = new Resposta();
         List<String> listaAuxiliar = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Dados/Respostas.txt");
         if (listaAuxiliar != null) {

@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import myTools.Ferramentas;
 import java.io.File;
+import java.io.IOException;
 import javax.swing.WindowConstants;
 import java.util.List;
 import javafx.scene.layout.Border;
@@ -76,7 +77,7 @@ public class Resultado extends JDialog {
             linEst = 4;
         } else if (linguaEst.equals("Françes")) {
             linEst = 5;
-        } else if (linguaEst.equals("Françes")) {
+        } else if (linguaEst.equals("Ingles")) {
             linEst = 6;
         }
 
@@ -148,9 +149,6 @@ public class Resultado extends JDialog {
         lbEspecifica1.setText(especifica1);
         lbEspecifica2.setText(especifica2);
 
-        List<String> zerar = controle.listar();
-        zerar.clear();
-        fer.salvarArquivo(new File("").getAbsolutePath() + "/src/Main/Respostas.txt", zerar);
 
         //--------------------------------- C O N T A ---------------------------------------
         double notaCG = 0;
@@ -160,8 +158,8 @@ public class Resultado extends JDialog {
         double notaEsp1 = 0;
         double notaEsp2 = 0;
 
-        List<String> respostas = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Dados/Respostas.txt");
-        List<String> gabaritos = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Dados/Gabarito.txt");
+       List<String> respostas = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Dados/Respostas.txt");
+       List<String> gabaritos = fer.abrirArquivo(new File("").getAbsolutePath() + "/src/Dados/Gabarito.txt");
 
         System.out.println(linguaEst + " - " + linEst + " --- " + especifica1 + " - " + esp1 + " --- " + especifica2 + " - " + esp2);
 
@@ -202,13 +200,16 @@ public class Resultado extends JDialog {
 
                             //------ ver no gabarito quais estão certas -------
                             if (rspGab != 0) {
-                                System.out.println(qstGab + "----------");
+                                System.out.println(matAlu + "----------" + matGab);
+                                System.out.println(qstGab + "----------" + qstGab);
+                                
+                                System.out.println(rspAlu + "-" + rspGab);
                                 if (rspGab % 2 != 0) {
                                     um = true;
                                     qtdcertosqst += 1;
                                     rspGab = rspGab - 1;
                                     if (rspGab - 2 < 0) { //ve se foi 1
-                                    } else if (rspGab - 4 < 0) { //ve se for 2
+                                    } else if (rspGab - 2 == 0) { //ve se for 2
                                         dois = true;
                                         qtdcertosqst += 1;
 
@@ -236,7 +237,7 @@ public class Resultado extends JDialog {
                                             } else if (rspGab - 4 == 0) {
                                                 quatro = true;
                                                 qtdcertosqst += 1;
-                                            } else if (rspGab - 4 < 0) {
+                                            } else if (rspGab - 2 == 0) {
                                                 dois = true;
                                                 qtdcertosqst += 1;
                                             }
@@ -261,7 +262,7 @@ public class Resultado extends JDialog {
                                             } else if (rspGab - 4 == 0) {
                                                 quatro = true;
                                                 qtdcertosqst += 1;
-                                            } else if (rspGab - 4 < 0) {
+                                            } else if (rspGab - 2 == 0) {
                                                 dois = true;
                                                 qtdcertosqst += 1;
                                             }
@@ -277,7 +278,7 @@ public class Resultado extends JDialog {
                                             } else if (rspGab - 4 == 0) {
                                                 quatro = true;
                                                 qtdcertosqst += 1;
-                                            } else if (rspGab - 4 < 0) {
+                                            } else if (rspGab - 2 == 0) {
                                                 dois = true;
                                                 qtdcertosqst += 1;
                                             }
@@ -285,7 +286,7 @@ public class Resultado extends JDialog {
                                     }
 
                                 } else {
-                                    if (rspGab - 4 < 0) { //ve se for 2
+                                    if (rspGab - 2 == 0) { //ve se for 2
                                         dois = true;
                                         qtdcertosqst += 1;
 
@@ -313,7 +314,7 @@ public class Resultado extends JDialog {
                                             } else if (rspGab - 4 == 0) {
                                                 quatro = true;
                                                 qtdcertosqst += 1;
-                                            } else if (rspGab - 4 < 0) {
+                                            } else if (rspGab - 2 == 0) {
                                                 dois = true;
                                                 qtdcertosqst += 1;
                                             }
@@ -338,7 +339,7 @@ public class Resultado extends JDialog {
                                             } else if (rspGab - 4 == 0) {
                                                 quatro = true;
                                                 qtdcertosqst += 1;
-                                            } else if (rspGab - 4 < 0) {
+                                            } else if (rspGab - 2 == 0) {
                                                 dois = true;
                                                 qtdcertosqst += 1;
                                             }
@@ -354,7 +355,7 @@ public class Resultado extends JDialog {
                                             } else if (rspGab - 4 == 0) {
                                                 quatro = true;
                                                 qtdcertosqst += 1;
-                                            } else if (rspGab - 4 < 0) {
+                                            } else if (rspGab - 2 == 0) {
                                                 dois = true;
                                                 qtdcertosqst += 1;
                                             }
@@ -369,8 +370,6 @@ public class Resultado extends JDialog {
                             //------ ver nas respostas quantas acertou -------
                             
                             rspGab = Integer.valueOf(g[2]);
-                            
-                            if (rspAlu < rspGab) {
 
                                 if (rspAlu != 0) {
 
@@ -378,7 +377,7 @@ public class Resultado extends JDialog {
                                         umAlu = true;
                                         rspAlu = rspAlu - 1;
                                         if (rspAlu - 2 < 0) { //ve se foi 1
-                                        } else if (rspAlu - 4 < 0) { //ve se for 2
+                                        } else if (rspAlu - 2 == 0) { //ve se for 2
                                             doisAlu = true;
 
                                         } else if (rspAlu - 8 < 0) {
@@ -398,7 +397,7 @@ public class Resultado extends JDialog {
                                                     quatroAlu = true;
                                                 } else if (rspAlu - 4 == 0) {
                                                     quatroAlu = true;
-                                                } else if (rspAlu - 4 < 0) {
+                                                } else if (rspAlu - 2 == 0) {
                                                     doisAlu = true;
                                                 }
                                             } else if (rspAlu - 8 == 0) {
@@ -416,7 +415,7 @@ public class Resultado extends JDialog {
                                                     quatroAlu = true;
                                                 } else if (rspAlu - 4 == 0) {
                                                     quatroAlu = true;
-                                                } else if (rspAlu - 4 < 0) {
+                                                } else if (rspAlu - 2 == 0) {
                                                     doisAlu = true;
                                                 }
                                             } else if (rspAlu - 8 == 0) {
@@ -427,14 +426,14 @@ public class Resultado extends JDialog {
                                                     quatroAlu = true;
                                                 } else if (rspAlu - 4 == 0) {
                                                     quatroAlu = true;
-                                                } else if (rspAlu - 4 < 0) {
+                                                } else if (rspAlu - 2 == 0) {
                                                     doisAlu = true;
                                                 }
                                             }
                                         }
 
                                     } else {
-                                        if (rspAlu - 4 < 0) { //ve se for 2
+                                        if (rspAlu - 2 == 0) { //ve se for 2
                                             doisAlu = true;
 
                                         } else if (rspAlu - 8 < 0) {
@@ -454,7 +453,7 @@ public class Resultado extends JDialog {
                                                     quatroAlu = true;
                                                 } else if (rspAlu - 4 == 0) {
                                                     quatroAlu = true;
-                                                } else if (rspAlu - 4 < 0) {
+                                                } else if (rspAlu - 2 == 0) {
                                                     doisAlu = true;
                                                 }
                                             } else if (rspAlu - 8 == 0) {
@@ -472,7 +471,7 @@ public class Resultado extends JDialog {
                                                     quatroAlu = true;
                                                 } else if (rspAlu - 4 == 0) {
                                                     quatroAlu = true;
-                                                } else if (rspAlu - 4 < 0) {
+                                                } else if (rspAlu - 2 == 0) {
                                                     doisAlu = true;
                                                 }
                                             } else if (rspAlu - 8 == 0) {
@@ -483,7 +482,7 @@ public class Resultado extends JDialog {
                                                     quatroAlu = true;
                                                 } else if (rspAlu - 4 == 0) {
                                                     quatroAlu = true;
-                                                } else if (rspAlu - 4 < 0) {
+                                                } else if (rspAlu - 2 == 0) {
                                                     doisAlu = true;
                                                 }
                                             }
@@ -491,12 +490,6 @@ public class Resultado extends JDialog {
                                     }
 
                                 }
-
-                            } else if (rspAlu == rspGab) {
-                                notaQst = 6;
-                            } else {
-                                notaQst = 0;
-                            }
 
                             boolean zerador = false;
 

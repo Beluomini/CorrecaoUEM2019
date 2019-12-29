@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import myTools.Ferramentas;
 import java.io.File;
+import java.io.IOException;
 import javax.swing.WindowConstants;
 import java.util.List;
 import tools.CentroDoMonitorMaior;
@@ -51,7 +52,9 @@ public class Prova2 extends JDialog {
     JLabel lbVazio27 = new JLabel("");
     JLabel lbVazio28 = new JLabel("");
     JLabel lbVazio29 = new JLabel("");
+    
     JButton btCalcular = new JButton("Calcular");
+    
     JLabel lbLP = new JLabel("Lingua Portuguesa");
     JLabel lbLiteratura = new JLabel("Literatura");
     JLabel lbEspanhol = new JLabel("Espanhol");
@@ -108,6 +111,7 @@ public class Prova2 extends JDialog {
     JLabel lb48 = new JLabel("Questão 48");
     JLabel lb49 = new JLabel("Questão 49");
     JLabel lb50 = new JLabel("Questão 50");
+    
     JTextField tf1 = new JTextField(2);
     JTextField tf2 = new JTextField(2);
     JTextField tf3 = new JTextField(2);
